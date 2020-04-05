@@ -1,5 +1,7 @@
 package com.auth0.jwt.algorithms;
 
+import org.apache.commons.codec.binary.Base64;
+
 import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.fail;
@@ -8,7 +10,6 @@ import java.nio.charset.StandardCharsets;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.apache.commons.codec.binary.Base64;
 
 public abstract class CryptoTestHelper {
 

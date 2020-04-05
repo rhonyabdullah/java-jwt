@@ -1,12 +1,11 @@
 package com.auth0.jwt.algorithms;
 
+import com.auth0.jwt.Base64Jwt;
 import com.auth0.jwt.exceptions.SignatureGenerationException;
 import com.auth0.jwt.exceptions.SignatureVerificationException;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import com.auth0.jwt.interfaces.RSAKeyProvider;
-import org.apache.commons.codec.binary.Base64;
 
-import java.nio.charset.StandardCharsets;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.security.SignatureException;
@@ -34,7 +33,7 @@ class RSAAlgorithm extends Algorithm {
 
     @Override
     public void verify(DecodedJWT jwt) throws SignatureVerificationException {
-        byte[] signatureBytes = Base64.decodeBase64(jwt.getSignature());
+        byte[] signatureBytes = Base64Jwt.decodeBase64(jwt.getSignature());
 
         try {
             RSAPublicKey publicKey = keyProvider.getPublicKeyById(jwt.getKeyId());
