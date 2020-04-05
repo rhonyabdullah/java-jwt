@@ -1,6 +1,6 @@
 package com.auth0.jwt.algorithms;
 
-import org.apache.commons.codec.binary.Base64;
+import com.auth0.jwt.Base64Jwt;
 
 import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.assertThat;
@@ -17,7 +17,7 @@ public abstract class CryptoTestHelper {
 
 	public static String asJWT(Algorithm algorithm, String header, String payload) {
 	    byte[] signatureBytes = algorithm.sign(header.getBytes(StandardCharsets.UTF_8), payload.getBytes(StandardCharsets.UTF_8));
-	    String jwtSignature = Base64.encodeBase64URLSafeString(signatureBytes);
+	    String jwtSignature = Base64Jwt.encodeBase64URLSafeString(signatureBytes);
 	    return String.format("%s.%s.%s", header, payload, jwtSignature);
 	}
 	
